@@ -4,11 +4,9 @@ import classes from './Counter.module.css';
 import {counterActions} from '../store/index'
 
 const Counter = () => {
-  const counter = useSelector(state => {
-    // console.log('counter')
-    return state.counter});
+  const counter = useSelector(state => state.counter.counter);
 
-  const toggle = useSelector(state =>state.toggle);
+  const toggle = useSelector(state =>state.counter.toggle);
 
   const toggleCounterHandler = () => {
       dispatch(counterActions.toggle());

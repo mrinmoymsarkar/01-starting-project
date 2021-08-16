@@ -21,11 +21,29 @@ const counterSlice = createSlice({
     }
 })
 
+const initialAuthState = {
+    isAuthenticated:false
+}
+
+const authenticatedSlice = createSlice({
+    name: 'authenticate',
+    initialAuthState,
+    reducers:{
+        login(state){
+            state.isAuthenticated = true
+        },
+        logout(state){
+            state.isAuthenticated = false
+        }
+    }
+})
+
 const store = configureStore({
-    reducer:counterSlice.reducer
+    reducer: {counter: counterSlice.reducer, auth: authenticatedSlice.reducer}
 });
 
 export const counterActions = counterSlice.actions;
+export const authActions = counterSlice.actions;
 
 
 export default store;
